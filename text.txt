@@ -1,0 +1,12 @@
+Ensure you replace 
+your-region', 
+'your-access-key-id',
+'your-secret-access-key', 
+and 'YourTableName' 
+with your actual AWS configurations and DynamoDB table details.
+-----------
+mkdir my-form-app
+cd my-form-app
+npm init -y
+npm install express
+npm install aws-sdk

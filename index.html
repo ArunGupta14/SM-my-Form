@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Form</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+
+<style>
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        background: url('https://d1yx97bvahpkv5.cloudfront.net/images/consent-form-bg.jpg') center/cover no-repeat;
+        /* background: url('https://d1wck0fcs5b4cc.cloudfront.net/images/image-1.png') center/cover no-repeat; Replace 'your-background-image-url.jpg' with the actual URL of your background image */
+    }
+
+    .container {
+        max-width: 400px;
+        margin: 20px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    select {
+        display: block;
+        margin-bottom: 8px;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 16px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    .container2 {
+        display: flex;
+    }
+    #ageSlider {
+        width: 300px;
+        height: 5px;
+        background-color: #ccc;
+        border-radius: 5px;
+    }
+
+    #ageSlider::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+        background-color: #007bff;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    .ages {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: white;
+        border-radius: 100px;
+        height: 6px;
+        justify-content: end;
+        align-items: center;
+        display: flex;
+    }
+
+    .html {
+        width: 5%;
+        background-color: #04AA6d;
+    }
+
+    #drag-handle {
+        width: 100%;
+        height: 20px;
+        /* background-color: #2196F3; */
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: ew-resize;
+    }
+
+    .btn-drop {
+        width: 100%;
+        margin-bottom: 10px;
+        border-radius: 50px;
+    }
+
+    .btn-menu {
+        width: 100%;
+    }
+
+
+    button {
+        background-color: #4caf50;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        display: block;
+        margin: 0 auto;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+
+<body>
+
+    <div class="container">
+        <!-- <h2>Form</h2> -->
+        <form id="myForm" action="/submit-form" method="post">
+            <!-- <label for="username">Name:</label> -->
+            <input type="text" id="name" name="name" placeholder="Full Name" required>
+
+            <!-- <label for="mobile">Mobile Number:</label> -->
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="Mobile Number" required>
+
+            <!-- <label for="email">Email:</label> -->
+            <input type="email" id="email" name="email" placeholder="Email ID" required>
+
+            <label for="age">Age:</label>
+            <div class="container2">
+                <input type="range" min="1" max="100" value="18" id="ageSlider">
+                <span id="ageValue">18</span>
+            </div>
+            <input type="hidden" id="ageInput" name="age" required>
+            <!-- <input type="number" id="age" name="age" required> -->
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-drop" type="button" id="stateDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Select your state name here
+                </button>
+                <ul class="dropdown-menu btn-menu" aria-labelledby="stateDropdown">
+                    <li><a class="dropdown-item" href="#" data-state="Delhi">Delhi</a></li>
+                    <li><a class="dropdown-item" href="#" data-state="Up">Up</a></li>
+                    <li><a class="dropdown-item" href="#" data-state="Something else here">Something else here</a></li>
+                </ul>
+            </div>
+
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle btn-drop" type="button" id="cityDropdown"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Select your city name here
+                </button>
+                <ul class="dropdown-menu btn-menu" aria-labelledby="cityDropdown" id="cityDropdownOptions">
+                    <li><a class="dropdown-item" href="#">gkp</a></li>
+                    <li><a class="dropdown-item" href="#">gorakhnath</a></li>
+                    <li><a class="dropdown-item" href="#">City1</a></li>
+                    <li><a class="dropdown-item" href="#">city2</a></li>
+                    <li><a class="dropdown-item" href="#">city3</a></li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </div>
+
+
+
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                    Individual Member
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                    Team Member
+                </label>
+            </div>
+
+
+            <div class="form-check" style="margin-top: 20px;">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Checked checkbox Term and condition 
+                </label>
+            </div>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+</body>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ageSlider = document.getElementById("ageSlider");
+        const ageValue = document.getElementById("ageValue");
+
+        ageSlider.addEventListener("input", () => {
+        ageValue.textContent = ageSlider.value;
+        });
+
+        // Add an event listener to the state dropdown
+        document.getElementById('stateDropdown').nextElementSibling.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                const selectedState = e.target.textContent;
+                updateCityDropdown(selectedState);
+
+                const stateDropdownButton = document.getElementById('stateDropdown');
+                stateDropdownButton.textContent = selectedState;
+            });
+        });
+
+
+        // Function to update the city dropdown based on the selected state
+        function updateCityDropdown(selectedState) {
+            const cityDropdown = document.getElementById('cityDropdown');
+            const cityOptions = document.getElementById('cityDropdownOptions');
+
+            // Clear existing options
+            cityOptions.innerHTML = '';
+
+            // Add new options based on the selected state
+            switch (selectedState) {
+                case 'Delhi':
+                    addCityOption('gkp');
+                    addCityOption('gorakhnath');
+                    addCityOption('Something else here');
+                    break;
+                case 'Up':
+                    addCityOption('City1');
+                    addCityOption('City2');
+                    addCityOption('City3');
+                    break;
+
+
+            }
+
+            // Function to add a city option to the dropdown
+            function addCityOption(cityName) {
+                const option = document.createElement('li');
+                option.innerHTML = `<a class="dropdown-item" href="#">${cityName}</a>`;
+                cityOptions.appendChild(option);
+            }
+
+            // Add event listener to update the city dropdown button with the selected city
+            document.getElementById('cityDropdown').nextElementSibling.querySelectorAll('.dropdown-item').forEach(item => {
+            item.addEventListener('click', function (e) {
+                const selectedCity = e.target.textContent;
+
+                // Update the city dropdown button with the selected city
+                const cityDropdownButton = document.getElementById('cityDropdown');
+                cityDropdownButton.textContent = selectedCity;
+            });
+            });
+
+
+        }
+
+
+    });
+
+</script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+</html>
